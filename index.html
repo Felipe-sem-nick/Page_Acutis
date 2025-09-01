@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acutis - Missionários da Esperança</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h2>Acutis - Missionários da Esperança</h2>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link">Início</a></li>
+                    <li><a href="#evangelho" class="nav-link">Evangelho do Dia</a></li>
+                    <li><a href="#intencoes" class="nav-link">Intenções</a></li>
+                    <li><a href="#galeria" class="nav-link">Galeria</a></li>
+                    <li><a href="#historia" class="nav-link">Nossa História</a></li>
+                    <li><a href="#carlo-acutis" class="nav-link">Carlo Acutis</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Acutis - Missionários da Esperança</h1>
+            <p>Levando esperança e fé através da missão cristã</p>
+            <button class="cta-button">Conheça Nossa Missão</button>
+        </div>
+    </section>
+
+    <!-- Evangelho do Dia -->
+    <section id="evangelho" class="evangelho">
+        <div class="container">
+            <h2>Evangelho do Dia</h2>
+            <div class="evangelho-content">
+                <div class="evangelho-box">
+                    <div class="evangelho-header">
+                        <h3 id="evangelho-data">Carregando...</h3>
+                    </div>
+                    <div class="evangelho-text">
+                        <p id="evangelho-leitura">Carregando evangelho do dia...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intenções -->
+    <section id="intencoes" class="intencoes">
+        <div class="container">
+            <h2>Compartilhe Suas Intenções</h2>
+            <div class="intencoes-content">
+                <form class="intencoes-form">
+                    <div class="form-group">
+                        <label for="nome">Nome (opcional)</label>
+                        <input type="text" id="nome" name="nome" placeholder="Seu nome">
+                    </div>
+                    <div class="form-group">
+                        <label for="intencao">Sua Intenção</label>
+                        <textarea id="intencao" name="intencao" rows="4" placeholder="Compartilhe sua intenção de oração..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Enviar Intenção</button>
+                </form>
+                <div class="intencoes-lista">
+                    <h3>Intenções da Comunidade</h3>
+                    <div id="lista-intencoes">
+                        <div class="intencao-item">
+                            <p>"Pela saúde de todos os enfermos"</p>
+                            <span>- Maria</span>
+                        </div>
+                        <div class="intencao-item">
+                            <p>"Pela paz no mundo"</p>
+                            <span>- João</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria -->
+    <section id="galeria" class="galeria">
+        <div class="container">
+            <h2>Nossa Galeria</h2>
+            <div class="galeria-grid">
+                <div class="galeria-item">
+                    <img src="imagens/img_visita1.jpeg" alt="Missão 1">
+                    <div class="galeria-overlay">
+                        <h4>Visita 1</h4>
+                    </div>
+                </div>
+                <div class="galeria-item">
+                    <img src="imagens/img_visita2.jpeg" alt="Missão 2">
+                    <div class="galeria-overlay">
+                        <h4>Visita 2</h4>
+                    </div>
+                </div>
+                <div class="galeria-item">
+                    <img src="imagens/img-visita3.jpeg" alt="Missão 3">
+                    <div class="galeria-overlay">
+                        <h4>Visita 3</h4>
+                    </div>
+                </div>
+                <div class="galeria-item">
+                    <img src="imagens/img_visita4.jpeg" alt="Missão 4">
+                    <div class="galeria-overlay">
+                        <h4>Visita 4</h4>
+                    </div>
+                </div>
+                <div class="galeria-item">
+                    <img src="https://via.placeholder.com/300x200/FF8C42/ffffff?text=Missão+5" alt="Missão 5">
+                    <div class="galeria-overlay">
+                        <h4>Evangelização</h4>
+                    </div>
+                </div>
+                <div class="galeria-item">
+                    <img src="https://via.placeholder.com/300x200/FF8C42/ffffff?text=Missão+6" alt="Missão 6">
+                    <div class="galeria-overlay">
+                        <h4>Outro</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- História do Grupo -->
+    <section id="historia" class="historia">
+        <div class="container">
+            <h2>Nossa História</h2>
+            <div class="historia-content">
+                <div class="historia-text">
+                    <p>O Grupo Acutis: Missionários da Esperança nasceu do desejo ardente de viver o Evangelho em sua essência: anunciar Jesus Cristo com alegria, simplicidade e proximidade. Inspirados pelo lema do Beato Carlo Acutis – “Estar sempre unido a Jesus Cristo, este é o meu projeto de vida” –, somos parte da Paróquia Cristo Rei e temos como missão levar esperança, fé e amor às famílias, especialmente aos jovens, mas também a todos aqueles que precisam de uma palavra de conforto e de um abraço de Igreja viva.</p> 
+                    <p>Atendendo ao apelo do Papa Francisco para sermos uma Igreja em saída, não nos contentamos em ficar parados. Queremos ir ao encontro, bater às portas, visitar os corações, e assim realizar uma verdadeira experiência missionária.</p>
+                    <p>O Grupo Acutis é isso: um chamado à santidade possível, alegre e verdadeira. Uma comunidade em movimento, apaixonada por Jesus Cristo, que sonha em transformar o mundo começando pelo encontro com cada pessoa, em cada visita.</p>
+                    </div>
+                <div class="historia-imagem">
+                    <img src="https://via.placeholder.com/400x300/FF8C42/ffffff?text=Nossa+História" alt="História do Grupo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carlo Acutis -->
+    <section id="carlo-acutis" class="carlo-acutis">
+        <div class="container">
+            <h2>Carlo Acutis - Nosso Patrono</h2>
+            <div class="carlo-content">
+                <div class="carlo-imagem">
+                    <img src="imagens/img_arteCarlo.jfif" alt="Carlo Acutis">
+                </div>
+                <div class="carlo-info">
+                    <h3>O Jovem Beato da Era Digital</h3>
+                    <p><strong>Carlo Acutis (1991-2006)</strong> foi um jovem italiano que se destacou por sua profunda fé cristã e por usar a tecnologia como ferramenta de evangelização.</p>
+                    
+                    <div class="carlo-details">
+                        <h4>Principais Características:</h4>
+                        <ul>
+                            <li><strong>Amor pela Eucaristia:</strong> Frequentava a missa diariamente</li>
+                            <li><strong>Devoção mariana:</strong> Rezava o terço todos os dias</li>
+                            <li><strong>Evangelização digital:</strong> Criou sites sobre milagres eucarísticos</li>
+                            <li><strong>Caridade:</strong> Ajudava os pobres e necessitados</li>
+                            <li><strong>Simplicidade:</strong> Viveu com humildade apesar das posses da família</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="carlo-quote">
+                        <blockquote>
+                            "A Eucaristia é a minha autoestrada para o Céu"
+                            <cite>- Beato Carlo Acutis</cite>
+                        </blockquote>
+                    </div>
+                    
+                    <div class="carlo-beatificacao">
+                        <h4>Beatificação</h4>
+                        <p>Carlo foi beatificado em 10 de outubro de 2020, tornando-se o primeiro millennial beato da Igreja Católica. Sua festa é celebrada no dia 12 de outubro.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Acutis - Missionários da Esperança</h3>
+                    <p>Levando a palavra de Deus e a esperança para todos os corações.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <p><i class="fas fa-envelope"></i> contato@acutismissionarios.org</p>
+                    <p><i class="fas fa-phone"></i> (11) 99999-9999</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Sooretama, ES</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Redes Sociais</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Horários de Encontro</h4>
+                    <p>Segunda: 19h às 20h</p>
+                    <p>Reunião de Oração</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Acutis - Missionários da Esperança. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
