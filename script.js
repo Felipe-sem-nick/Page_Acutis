@@ -46,12 +46,19 @@ async function carregarEvangelhoAutomatico() {
     try {
         // Check if we already have today's gospel cached
         const hoje = new Date();
-        const dataHoje = hoje.toDateString();
+        const dataHoje = hoje.toISOString().split('T')[0]; // Format: YYYY-MM-DD
+        
+        console.log('Current date:', dataHoje);
+        console.log('Cached date:', cacheDate);
+        console.log('Has cached gospel:', !!cachedGospel);
         
         if (cachedGospel && cacheDate === dataHoje) {
+            console.log('Using cached gospel for today');
             exibirEvangelho(cachedGospel, dataElement, leituraElement);
             return;
         }
+        
+        console.log('Loading new gospel for date:', dataHoje);
         
         // Try to fetch from Canção Nova directly first
         console.log('Fetching gospel from Canção Nova...');
@@ -59,19 +66,28 @@ async function carregarEvangelhoAutomatico() {
         
         try {
             evangelhoHoje = await fetchGospelFromCancaoNova();
+            console.log('Successfully fetched from Canção Nova');
         } catch (corsError) {
             console.log('CORS error, trying with proxy...', corsError);
-            evangelhoHoje = await fetchGospelWithProxy();
+            try {
+                evangelhoHoje = await fetchGospelWithProxy();
+                console.log('Successfully fetched via proxy');
+            } catch (proxyError) {
+                console.log('Proxy failed, using fallback...', proxyError);
+                evangelhoHoje = await obterEvangelhoAlternativo();
+            }
         }
         
         if (!evangelhoHoje) {
-            console.log('Failed to fetch from online sources, using fallback...');
+            console.log('All methods failed, using fallback...');
             evangelhoHoje = await obterEvangelhoAlternativo();
         }
         
-        // Cache the result
+        // Cache the result with the correct date
         cachedGospel = evangelhoHoje;
         cacheDate = dataHoje;
+        
+        console.log('Gospel cached for date:', dataHoje);
         
         exibirEvangelho(evangelhoHoje, dataElement, leituraElement);
         
@@ -83,11 +99,22 @@ async function carregarEvangelhoAutomatico() {
                 Verifique sua conexão com a internet ou tente novamente mais tarde.
             </p>
             <div style="text-align: center; margin-top: 1rem;">
-                <button onclick="carregarEvangelhoAutomatico()" style="background: #FF8C42; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;">🔄 Tentar Novamente</button>
+                <button onclick="forcarAtualizacaoEvangelho()" style="background: #FF8C42; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;">🔄 Tentar Novamente</button>
             </div>
         `;
     }
 }
+
+// Force gospel update (clears cache)
+function forcarAtualizacaoEvangelho() {
+    console.log('Forçando atualização do evangelho...');
+    cachedGospel = null;
+    cacheDate = null;
+    carregarEvangelhoAutomatico();
+}
+
+// Make force update available globally
+window.forcarAtualizacaoEvangelho = forcarAtualizacaoEvangelho;
 
 // Function to fetch gospel directly from Canção Nova
 async function fetchGospelFromCancaoNova() {
@@ -232,6 +259,33 @@ async function testarConexaoCancaoNova() {
 
 // Make testing function available globally
 window.testarConexaoCancaoNova = testarConexaoCancaoNova;
+
+// Debug function to check cache status
+function verificarStatusCache() {
+    const hoje = new Date();
+    const dataAtual = hoje.toISOString().split('T')[0];
+    
+    console.log('=== STATUS DO CACHE DO EVANGELHO ===');
+    console.log('Data atual:', dataAtual);
+    console.log('Data no cache:', cacheDate);
+    console.log('Evangelho em cache:', !!cachedGospel);
+    console.log('Cache válido:', cacheDate === dataAtual);
+    
+    if (cachedGospel) {
+        console.log('Referência do evangelho em cache:', cachedGospel.referencia);
+        console.log('Início do texto:', cachedGospel.texto.substring(0, 100) + '...');
+    }
+    
+    return {
+        dataAtual,
+        dataCache: cacheDate,
+        temCache: !!cachedGospel,
+        cacheValido: cacheDate === dataAtual
+    };
+}
+
+// Make debug function available globally
+window.verificarStatusCache = verificarStatusCache;
 async function obterEvangelhoAlternativo() {
     // In a real implementation, you would use a CORS-enabled API or your own backend
     // For now, we'll simulate daily content based on date patterns
@@ -367,13 +421,59 @@ function exibirEvangelho(evangelho, dataElement, leituraElement) {
             ${evangelho.texto}
         </div>
         <div style="text-align: center; margin-top: 2rem;">
-            <button onclick="carregarEvangelhoAutomatico()" style="background: #FF8C42; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; font-size: 0.9rem;">🔄 Atualizar</button>
+            <button onclick="forcarAtualizacaoEvangelho()" style="background: #FF8C42; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; font-size: 0.9rem;">🔄 Atualizar</button>
         </div>
     `;
 }
 
-// Auto-refresh gospel at midnight
+// Auto-refresh gospel at midnight and check periodically
 function configurarAtualizacaoAutomatica() {
+    console.log('Configurando atualização automática do evangelho...');
+    
+    // Function to check if date has changed
+    function verificarMudancaData() {
+        const agora = new Date();
+        const dataAtual = agora.toISOString().split('T')[0];
+        
+        console.log('Verificando data:', dataAtual, 'vs cached:', cacheDate);
+        
+        if (cacheDate && cacheDate !== dataAtual) {
+            console.log('Data mudou! Carregando novo evangelho...');
+            cachedGospel = null;
+            cacheDate = null;
+            carregarEvangelhoAutomatico();
+        }
+    }
+    
+    // Check every 30 minutes for date changes
+    setInterval(verificarMudancaData, 30 * 60 * 1000); // 30 minutes
+    
+    // Also check every minute after 11:50 PM
+    function verificarProximoAMeiaNoite() {
+        const agora = new Date();
+        const hora = agora.getHours();
+        const minuto = agora.getMinutos();
+        
+        // If it's between 11:50 PM and 12:10 AM, check more frequently
+        if (hora === 23 && minuto >= 50) {
+            console.log('Próximo à meia-noite, verificando mais frequentemente...');
+            const intervalFrequente = setInterval(() => {
+                const novaData = new Date();
+                if (novaData.getHours() === 0 && novaData.getMinutes() < 10) {
+                    console.log('Meia-noite detectada! Atualizando evangelho...');
+                    cachedGospel = null;
+                    cacheDate = null;
+                    carregarEvangelhoAutomatico();
+                    clearInterval(intervalFrequente);
+                }
+            }, 60000); // Check every minute
+        }
+    }
+    
+    // Check for midnight transition every hour
+    setInterval(verificarProximoAMeiaNoite, 60 * 60 * 1000); // Every hour
+    
+    // Original midnight calculation for precise timing
     const agora = new Date();
     const proximaMeianoite = new Date(agora);
     proximaMeianoite.setDate(proximaMeianoite.getDate() + 1);
@@ -381,8 +481,11 @@ function configurarAtualizacaoAutomatica() {
     
     const tempoAteProximaMeianoite = proximaMeianoite.getTime() - agora.getTime();
     
+    console.log(`Próxima atualização à meia-noite em: ${Math.round(tempoAteProximaMeianoite / 1000 / 60)} minutos`);
+    
     // Schedule automatic update at midnight
     setTimeout(() => {
+        console.log('Meia-noite! Atualizando evangelho...');
         // Clear cache to force new content
         cachedGospel = null;
         cacheDate = null;
@@ -390,8 +493,9 @@ function configurarAtualizacaoAutomatica() {
         // Load new gospel
         carregarEvangelhoAutomatico();
         
-        // Set up daily interval (24 hours)
+        // Set up daily interval (24 hours) as backup
         setInterval(() => {
+            console.log('Atualização diária automática...');
             cachedGospel = null;
             cacheDate = null;
             carregarEvangelhoAutomatico();
