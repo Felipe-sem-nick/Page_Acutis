@@ -106,15 +106,15 @@ async function carregarEvangelhoAutomatico() {
     } catch (error) {
         console.error('❌ Erro crítico:', error);
         leituraElement.innerHTML = `
-            <div style="text-align: center; padding: 1.5rem; background: #ffebee; border-radius: 8px; border-left: 4px solid #D84315;">
-                <p style="color: #D84315; font-weight: bold; margin-bottom: 1rem;">
+            <div style="text-align: center; padding: 1.5rem; background: #ffebee; border-radius: 8px; border-left: 4px solid #0D47A1;">
+                <p style="color: #0D47A1; font-weight: bold; margin-bottom: 1rem;">
                     ⚠️ Não foi possível carregar o evangelho
                 </p>
                 <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">
                     Verifique sua conexão ou tente novamente.
                 </p>
                 <button onclick="forcarAtualizacaoEvangelho()" 
-                        style="background: #FF8C42; color: white; border: none; padding: 0.6rem 1.2rem; 
+                        style="background: #4CAF50; color: white; border: none; padding: 0.6rem 1.2rem; 
                                border-radius: 5px; cursor: pointer; font-size: 0.9rem;">
                     🔄 Tentar Novamente
                 </button>
@@ -491,13 +491,13 @@ function exibirEvangelho(evangelho, dataElement, leituraElement) {
     
     leituraElement.innerHTML = `
         <div style="text-align: center; margin-bottom: 1.5rem;">
-            <p><strong style="color: #D84315; font-size: 1.1rem;">${evangelho.referencia}</strong></p>
+            <p><strong style="color: #0D47A1; font-size: 1.1rem;">${evangelho.referencia}</strong></p>
         </div>
         <div style="white-space: pre-line; text-align: justify; line-height: 1.8; font-size: 1rem;">
             ${evangelho.texto}
         </div>
         <div style="text-align: center; margin-top: 2rem;">
-            <button onclick="forcarAtualizacaoEvangelho()" style="background: #FF8C42; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; font-size: 0.9rem;">🔄 Atualizar</button>
+            <button onclick="forcarAtualizacaoEvangelho()" style="background: #4CAF50; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; font-size: 0.9rem;">🔄 Atualizar</button>
         </div>
     `;
 }
@@ -1271,10 +1271,10 @@ const observer = new IntersectionObserver((entries) => {
 window.addEventListener('scroll', () => {
     const header = document.querySelector('.header');
     if (window.scrollY > 100) {
-        header.style.background = 'rgba(255, 140, 66, 0.95)';
+        header.style.background = 'rgba(21, 101, 192, 0.95)';
         header.style.backdropFilter = 'blur(10px)';
     } else {
-        header.style.background = 'linear-gradient(135deg, #FF8C42 0%, #FF7B32 100%)';
+        header.style.background = 'linear-gradient(135deg, #1565C0 0%, #0D47A1 100%)';
         header.style.backdropFilter = 'none';
     }
 });
@@ -1518,7 +1518,7 @@ function adicionarVersiculoRodape() {
     scriptureDiv.innerHTML = `
         <h4>Palavra do Dia</h4>
         <p style="font-style: italic;">${scripture.text}</p>
-        <p style="color: #FFE0B8; font-size: 0.9rem;">${scripture.reference}</p>
+        <p style="color: #E3F2FD; font-size: 0.9rem;">${scripture.reference}</p>
     `;
     
     footerContent.appendChild(scriptureDiv);
