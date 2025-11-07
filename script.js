@@ -94,12 +94,12 @@ async function carregarEvangelhoAutomatico() {
     } catch (error) {
         console.error('Erro ao carregar evangelho:', error);
         leituraElement.innerHTML = `
-            <p style="color: #D84315; text-align: center;">
+            <p style="color: #054b98; text-align: center;">
                 <strong>⚠️ Erro ao carregar o evangelho</strong><br>
                 Verifique sua conexão com a internet ou tente novamente mais tarde.
             </p>
             <div style="text-align: center; margin-top: 1rem;">
-                <button onclick="forcarAtualizacaoEvangelho()" style="background: #FF8C42; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;">🔄 Tentar Novamente</button>
+                <button onclick="forcarAtualizacaoEvangelho()" style="background: #28a745; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;">🔄 Tentar Novamente</button>
             </div>
         `;
     }
@@ -286,6 +286,24 @@ function verificarStatusCache() {
 
 // Make debug function available globally
 window.verificarStatusCache = verificarStatusCache;
+
+// Add event listener for refresh button
+document.addEventListener('DOMContentLoaded', () => {
+    const refreshBtn = document.getElementById('refresh-btn');
+    if (refreshBtn) {
+        refreshBtn.addEventListener('click', () => {
+            const listaIntencoes = document.getElementById('lista-intencoes');
+            listaIntencoes.innerHTML = `
+                <div class="loading-intencoes">
+                    <div class="loading"></div>
+                    <p>Carregando intenções...</p>
+                </div>
+            `;
+            carregarIntencoes();
+        });
+    }
+});
+
 async function obterEvangelhoAlternativo() {
     // In a real implementation, you would use a CORS-enabled API or your own backend
     // For now, we'll simulate daily content based on date patterns
@@ -357,7 +375,7 @@ async function obterEvangelhoAlternativo() {
             referencia: "Evangelho segundo São João (Jo 3,16-21)",
             texto: `Naquele tempo, disse Jesus a Nicodemos:
             
-            "Deus amou tanto o mundo, que entregou o seu Filho único, para que todo o que nele crer não pereça, mas tenha a vida eterna. De fato, Deus não enviou o seu Filho ao mundo para condenar o mundo, mas para que o mundo seja salvo por ele. Quem nele crê, não é condenado; quem não crê, já está condenado, porque não acreditou no nome do Filho único de Deus.
+            "Deus amou tanto o mundo, que entregou o seu Filho único, para que todo o que nele crer não pereça, mas tenha a vida eterna. De fato, Deus não enviou o seu Filho ao mundo para condenar o mundo, mas para que o mundo seja salvo por ele. Quem nele crer, não é condenado; quem não crê, já está condenado, porque não acreditou no nome do Filho único de Deus.
             
             Ora, o julgamento é este: a luz veio ao mundo, mas os homens preferiram as trevas à luz, porque suas ações eram más. Quem pratica o mal odeia a luz e não se aproxima da luz, para que suas ações não sejam denunciadas. Mas quem age conforme a verdade aproxima-se da luz, para que se torne claro que suas ações são realizadas em Deus."
             
@@ -368,7 +386,7 @@ async function obterEvangelhoAlternativo() {
             referencia: "Evangelho segundo São Marcos (Mc 12,28-34)",
             texto: `Naquele tempo, aproximou-se de Jesus um dos escribas que os tinha ouvido discutir. Vendo como Jesus havia respondido bem, perguntou-lhe: "Qual é o primeiro de todos os mandamentos?"
             
-            Jesus respondeu: "O primeiro é este: 'Ouve, ó Israel! O Senhor, nosso Deus, é o único Senhor. Amarás o Senhor, teu Deus, de todo o teu coração, de toda a tua alma, de todo o teu entendimento e com toda a tua força'. O segundo é este: 'Amarás o teu próximo como a ti mesmo'. Não existe outro mandamento maior do que estes."
+            Jesus respondeu: "O primeiro é este: 'Ouve, ó Israel! O Senhor, nosso Deus, é o único Senhor. Amarás o Senhor, teu Deus, de todo o teu coração, de toda o tua alma, de todo o teu entendimento e com toda a tua força'. O segundo é este: 'Amarás o teu próximo como a ti mesmo'. Não existe outro mandamento maior do que estes."
             
             O escriba disse a Jesus: "Muito bem, Mestre! Na verdade disseste que ele é único e não há outro além dele; e que amá-lo de todo o coração, de todo o entendimento e com toda a força, e amar o próximo como a si mesmo vale mais do que todos os holocaustos e sacrifícios."
             
@@ -415,13 +433,13 @@ function exibirEvangelho(evangelho, dataElement, leituraElement) {
     
     leituraElement.innerHTML = `
         <div style="text-align: center; margin-bottom: 1.5rem;">
-            <p><strong style="color: #D84315; font-size: 1.1rem;">${evangelho.referencia}</strong></p>
+            <p><strong style="color: #054b98; font-size: 1.1rem;">${evangelho.referencia}</strong></p>
         </div>
         <div style="white-space: pre-line; text-align: justify; line-height: 1.8; font-size: 1rem;">
             ${evangelho.texto}
         </div>
         <div style="text-align: center; margin-top: 2rem;">
-            <button onclick="forcarAtualizacaoEvangelho()" style="background: #FF8C42; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; font-size: 0.9rem;">🔄 Atualizar</button>
+            <button onclick="forcarAtualizacaoEvangelho()" style="background: #28a745; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; font-size: 0.9rem;">🔄 Atualizar</button>
         </div>
     `;
 }
@@ -452,7 +470,7 @@ function configurarAtualizacaoAutomatica() {
     function verificarProximoAMeiaNoite() {
         const agora = new Date();
         const hora = agora.getHours();
-        const minuto = agora.getMinutos();
+        const minuto = agora.getMinutes();
         
         // If it's between 11:50 PM and 12:10 AM, check more frequently
         if (hora === 23 && minuto >= 50) {
@@ -508,6 +526,25 @@ function configurarAtualizacaoAutomatica() {
 document.addEventListener('DOMContentLoaded', () => {
     carregarEvangelhoAutomatico();
     configurarAtualizacaoAutomatica();
+    
+    // Add event listener for refresh button in intentions section
+    const refreshBtn = document.getElementById('refresh-btn');
+    if (refreshBtn) {
+        refreshBtn.addEventListener('click', () => {
+            const listaIntencoes = document.getElementById('lista-intencoes');
+            listaIntencoes.innerHTML = `
+                <div class="loading-intencoes">
+                    <div class="loading"></div>
+                    <p>Carregando intenções...</p>
+                </div>
+            `;
+            carregarIntencoes();
+        });
+    }
+    
+    // Initialize intentions form and load intentions
+    initializeIntencaoForm();
+    carregarIntencoes();
 });
 
 // Test function to check API structure
@@ -974,7 +1011,7 @@ async function handleFormSubmit(e) {
         
         // Show success message
         submitBtn.textContent = 'Intenção Enviada!';
-        submitBtn.style.background = '#4CAF50';
+        submitBtn.style.background = '#28a745';
         
         // Reload intentions to show the new one
         setTimeout(() => {
@@ -990,7 +1027,7 @@ async function handleFormSubmit(e) {
     } else {
         // Show error message
         submitBtn.textContent = 'Erro ao enviar';
-        submitBtn.style.background = '#f44336';
+        submitBtn.style.background = '#dc3545';
         
         setTimeout(() => {
             submitBtn.textContent = originalText;
@@ -999,341 +1036,3 @@ async function handleFormSubmit(e) {
         }, 2000);
     }
 }
-
-// Initialize everything after DOM loads
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('=== DOM CONTENT LOADED ==>');
-    
-    // Initialize form elements and events
-    initializeIntencaoForm();
-    
-    // Initialize gallery folders
-    initializeGalleryFolders();
-    
-    // Test API and load intentions
-    testarAPI();
-    setTimeout(() => carregarIntencoes(), 500); // Small delay after API test
-    
-    // Initialize refresh button
-    const refreshBtn = document.getElementById('refresh-btn');
-    if (refreshBtn) {
-        refreshBtn.addEventListener('click', () => {
-            console.log('Manual refresh triggered');
-            refreshBtn.innerHTML = '🔄 Carregando...';
-            refreshBtn.disabled = true;
-            
-            carregarIntencoes().finally(() => {
-                refreshBtn.innerHTML = '🔄 Atualizar';
-                refreshBtn.disabled = false;
-            });
-        });
-    }
-    
-    // Initialize animations
-    const animatedElements = document.querySelectorAll('section');
-    animatedElements.forEach(el => {
-        el.classList.add('fade-in');
-        observer.observe(el);
-    });
-});
-
-// Scroll animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, observerOptions);
-
-// Scroll animations (already initialized in main DOMContentLoaded)
-
-// Header background change on scroll
-window.addEventListener('scroll', () => {
-    const header = document.querySelector('.header');
-    if (window.scrollY > 100) {
-        header.style.background = 'rgba(255, 140, 66, 0.95)';
-        header.style.backdropFilter = 'blur(10px)';
-    } else {
-        header.style.background = 'linear-gradient(135deg, #FF8C42 0%, #FF7B32 100%)';
-        header.style.backdropFilter = 'none';
-    }
-});
-
-// Gallery folder functionality
-function initializeGalleryFolders() {
-    const folderItems = document.querySelectorAll('.folder-item');
-    const folderContents = document.querySelectorAll('.folder-content');
-    const closeFolderBtns = document.querySelectorAll('.close-folder');
-    const photoItems = document.querySelectorAll('.photo-item img');
-    
-    // Open folder on click
-    folderItems.forEach(item => {
-        item.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            const folderId = item.getAttribute('data-folder');
-            const folderContent = document.getElementById(`folder-${folderId}`);
-            
-            if (folderContent) {
-                // Close any open folder first
-                folderContents.forEach(content => {
-                    content.classList.remove('active');
-                });
-                
-                // Ensure the modal is properly positioned
-                folderContent.style.position = 'fixed';
-                folderContent.style.top = '0';
-                folderContent.style.left = '0';
-                folderContent.style.width = '100vw';
-                folderContent.style.height = '100vh';
-                folderContent.style.zIndex = '10000';
-                
-                // Move to body if it's not already there (shouldn't be needed with proper HTML)
-                if (folderContent.parentNode !== document.body) {
-                    document.body.appendChild(folderContent);
-                }
-                
-                // Open the clicked folder
-                folderContent.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Prevent body scroll
-                
-                console.log(`Opened folder: ${folderId}`);
-            }
-        });
-    });
-    
-    // Close folder functionality
-    closeFolderBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            // Close any active lightbox first
-            const activeLightbox = document.querySelector('.photo-lightbox.active');
-            if (activeLightbox) {
-                closeLightbox(activeLightbox);
-            }
-            
-            const folderContent = btn.closest('.folder-content');
-            if (folderContent) {
-                folderContent.classList.remove('active');
-                document.body.style.overflow = 'auto'; // Restore body scroll
-            }
-        });
-    });
-    
-    // Close folder when clicking outside content
-    folderContents.forEach(content => {
-        content.addEventListener('click', (e) => {
-            // Only close if clicking the background, not the content area
-            if (e.target === content) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                // Check if there's an active lightbox first
-                const activeLightbox = document.querySelector('.photo-lightbox.active');
-                if (activeLightbox) {
-                    closeLightbox(activeLightbox);
-                    return;
-                }
-                
-                content.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-        });
-    });
-    
-    // Photo lightbox functionality
-    photoItems.forEach(img => {
-        img.addEventListener('click', (e) => {
-            e.stopPropagation();
-            openPhotoLightbox(img.src, img.alt);
-        });
-    });
-    
-    // Close folder with Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            // First check if there's an active lightbox
-            const activeLightbox = document.querySelector('.photo-lightbox.active');
-            if (activeLightbox) {
-                e.preventDefault();
-                e.stopPropagation();
-                closeLightbox(activeLightbox);
-                return; // Don't close folder if lightbox is open
-            }
-            
-            // Then check for active folder
-            const activeFolder = document.querySelector('.folder-content.active');
-            if (activeFolder) {
-                e.preventDefault();
-                e.stopPropagation();
-                activeFolder.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-        }
-    });
-}
-
-// Photo lightbox function
-function openPhotoLightbox(src, alt) {
-    // Remove any existing lightbox
-    const existingLightbox = document.querySelector('.photo-lightbox');
-    if (existingLightbox) {
-        existingLightbox.remove();
-    }
-    
-    // Create new lightbox
-    const lightbox = document.createElement('div');
-    lightbox.className = 'photo-lightbox';
-    lightbox.innerHTML = `
-        <img src="${src}" alt="${alt}" />
-    `;
-    
-    document.body.appendChild(lightbox);
-    
-    // Show lightbox with animation
-    setTimeout(() => {
-        lightbox.classList.add('active');
-    }, 10);
-    
-    // Close lightbox on click
-    lightbox.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        closeLightbox(lightbox);
-    });
-    
-    // Prevent lightbox from closing when clicking the image
-    const img = lightbox.querySelector('img');
-    img.addEventListener('click', (e) => {
-        e.stopPropagation();
-    });
-}
-
-// Function to properly close lightbox
-function closeLightbox(lightbox) {
-    if (!lightbox) return;
-    
-    lightbox.classList.remove('active');
-    setTimeout(() => {
-        if (lightbox && lightbox.parentNode) {
-            lightbox.remove();
-        }
-    }, 300);
-}
-
-// Function to add photos to a folder (for future use)
-function addPhotoToFolder(folderId, imageSrc, caption) {
-    const folder = document.getElementById(`folder-${folderId}`);
-    if (!folder) return;
-    
-    const photosGrid = folder.querySelector('.photos-grid');
-    const noPhotos = photosGrid.querySelector('.no-photos');
-    
-    // Remove "no photos" message if it exists
-    if (noPhotos) {
-        noPhotos.remove();
-    }
-    
-    // Create new photo item
-    const photoItem = document.createElement('div');
-    photoItem.className = 'photo-item';
-    photoItem.innerHTML = `
-        <img src="${imageSrc}" alt="${caption}">
-        <div class="photo-caption">${caption}</div>
-    `;
-    
-    // Add click event for lightbox
-    const img = photoItem.querySelector('img');
-    img.addEventListener('click', (e) => {
-        e.stopPropagation();
-        openPhotoLightbox(img.src, img.alt);
-    });
-    
-    photosGrid.appendChild(photoItem);
-    
-    // Update photo count in folder cover
-    const folderCover = document.querySelector(`[data-folder="${folderId}"] .photo-count`);
-    if (folderCover) {
-        const currentCount = photosGrid.querySelectorAll('.photo-item').length;
-        folderCover.textContent = `${currentCount} foto${currentCount !== 1 ? 's' : ''}`;
-    }
-}
-
-// Make addPhotoToFolder available globally for future use
-window.addPhotoToFolder = addPhotoToFolder;
-
-// Galeria lightbox functionality (legacy support for old lightbox code)
-// Note: Old gallery code removed - now handled by the new folder system above
-
-// Random scripture quotes for variety
-const scriptures = [
-    {
-        text: '"Vinde a mim, todos vós que estais aflitos e sobrecarregados, e eu vos aliviarei."',
-        reference: 'Mateus 11:28'
-    },
-    {
-        text: '"O Senhor é o meu pastor; nada me faltará."',
-        reference: 'Salmo 23:1'
-    },
-    {
-        text: '"Tudo posso naquele que me fortalece."',
-        reference: 'Filipenses 4:13'
-    },
-    {
-        text: '"Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito."',
-        reference: 'João 3:16'
-    }
-];
-
-// Add random scripture to footer
-function adicionarVersiculoRodape() {
-    const scripture = scriptures[Math.floor(Math.random() * scriptures.length)];
-    const footerContent = document.querySelector('.footer-content');
-    
-    const scriptureDiv = document.createElement('div');
-    scriptureDiv.className = 'footer-section';
-    scriptureDiv.innerHTML = `
-        <h4>Palavra do Dia</h4>
-        <p style="font-style: italic;">${scripture.text}</p>
-        <p style="color: #FFE0B8; font-size: 0.9rem;">${scripture.reference}</p>
-    `;
-    
-    footerContent.appendChild(scriptureDiv);
-}
-
-// Initialize scripture
-document.addEventListener('DOMContentLoaded', adicionarVersiculoRodape);
-
-// CTA Button functionality
-document.querySelector('.cta-button').addEventListener('click', () => {
-    document.querySelector('#historia').scrollIntoView({
-        behavior: 'smooth'
-    });
-});
-
-// Form validation
-function validarFormulario() {
-    const intencaoInput = document.getElementById('intencao');
-    const submitBtn = document.querySelector('.submit-btn');
-    
-    intencaoInput.addEventListener('input', () => {
-        if (intencaoInput.value.trim().length > 0) {
-            submitBtn.disabled = false;
-            submitBtn.style.opacity = '1';
-        } else {
-            submitBtn.disabled = true;
-            submitBtn.style.opacity = '0.6';
-        }
-    });
-}
-
-document.addEventListener('DOMContentLoaded', validarFormulario);
