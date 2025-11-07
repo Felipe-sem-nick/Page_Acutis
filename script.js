@@ -322,7 +322,7 @@ async function obterEvangelhoAlternativo() {
             referencia: "Evangelho segundo São João (Jo 14,1-6)",
             texto: `Naquele tempo, disse Jesus aos seus discípulos:
             
-            "Não se perturbe o vosso coração. Tendes fé em Deus, tende fé também em mim. Na casa de meu Pai há muitas moradas. Se assim não fosse, eu vos teria dito. Vou preparar-vos um lugar. E quando eu for e vos preparar um lugar, voltarei e vos levarei comigo, para que, onde eu estou, estejais também vós. E vós conheceis o caminho para onde eu vou."
+            "Não se perturbe o vosso coração. Tendes fé em Deus, tende fé também em mim. Na casa de meu Pai há muitas moradas. Se assim não fosse, eu vos teria dito. Vou preparar-vos um lugar. E quando eu for e vos preparar um lugar, voltarei e vos levarei comigo, para que, onde eu estou, estejais também vós. E vós conhecereis o caminho para onde eu vou."
             
             Disse-lhe Tomé: "Senhor, não sabemos para onde vais. Como podemos conhecer o caminho?"
             
@@ -1036,3 +1036,62 @@ async function handleFormSubmit(e) {
         }, 2000);
     }
 }
+
+// Galeria functionality - Folder click events
+document.addEventListener('DOMContentLoaded', function() {
+    // Add click event to all folder items
+    const folderItems = document.querySelectorAll('.folder-item');
+    const folderContents = document.querySelectorAll('.folder-content');
+    const closeButtons = document.querySelectorAll('.close-folder');
+    
+    // Open folder when clicking on folder item
+    folderItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const folderId = this.getAttribute('data-folder');
+            const folderContent = document.getElementById(`folder-${folderId}`);
+            
+            if (folderContent) {
+                // Close all other folders first
+                folderContents.forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Open the clicked folder
+                folderContent.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            }
+        });
+    });
+    
+    // Close folder when clicking close button
+    closeButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent event bubbling
+            const folderContent = this.closest('.folder-content');
+            folderContent.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+        });
+    });
+    
+    // Close folder when clicking outside the content
+    folderContents.forEach(content => {
+        content.addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('active');
+                document.body.style.overflow = ''; // Restore scrolling
+            }
+        });
+    });
+    
+    // Close folder with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            folderContents.forEach(content => {
+                if (content.classList.contains('active')) {
+                    content.classList.remove('active');
+                    document.body.style.overflow = ''; // Restore scrolling
+                }
+            });
+        }
+    });
+});

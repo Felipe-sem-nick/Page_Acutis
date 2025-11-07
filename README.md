@@ -19,11 +19,11 @@ Um website religioso completo com funcionalidades dinâmicas para compartilhamen
 ### 📸 Galeria Organizada
 - Sistema de pastas para diferentes ocasiões:
   - 🏠 Visitas Pastorais
-  - 📢 Evangelização
-  - 🎉 Eventos Especiais
-  - 🙏 Orações e Encontros
-  - 🤝 Atividades Comunitárias
-  - 📚 Formação e Estudo
+  - Encontros semanais
+  - Gesto concreto
+  - Datas especiais
+  - Branco
+  - Outros momentos
 - Visualização em tela cheia
 - Lightbox para fotos individuais
 
