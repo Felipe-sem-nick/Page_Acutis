@@ -20,7 +20,6 @@
                     <li><a href="#home" class="nav-link">Início</a></li>
                     <li><a href="#evangelho" class="nav-link">Evangelho do Dia</a></li>
                     <li><a href="#intencoes" class="nav-link">Intenções</a></li>
-                    <li><a href="#galeria" class="nav-link">Galeria</a></li>
                     <li><a href="#historia" class="nav-link">Nossa História</a></li>
                     <li><a href="#carlo-acutis" class="nav-link">Carlo Acutis</a></li>
                 </ul>
@@ -36,9 +35,16 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Acutis - Missionários da Esperança</h1>
-            <p>Levando esperança e fé através da missão cristã</p>
-            <button class="cta-button">Conheça Nossa Missão</button>
+            <div class="hero-text">
+                <h1>Acutis - Missionários da Esperança</h1>
+                <p>Levando esperança e fé através da missão cristã</p>
+                <button class="cta-button">Conheça Nossa Missão</button>
+            </div>
+            <div class="hero-quote-box">
+                <i class="fas fa-quote-left hero-quote-icon"></i>
+                <p class="hero-quote-text">Todos nascem originais, mas muitos morrem como fotocópias.</p>
+                <span class="hero-quote-author">— Carlo Acutis</span>
+            </div>
         </div>
     </section>
 
@@ -91,183 +97,8 @@
         </div>
     </section>
 
-    <!-- Galeria -->
-    <section id="galeria" class="galeria">
-        <div class="container">
-            <h2>Galeria</h2>
-            <div class="galeria-folders">
-                <!-- Pasta 1: Visitas Pastorais -->
-                <div class="folder-item" data-folder="visitas">
-                    <div class="folder-cover">
-                        <img src="imagens/img_visita1.jpeg" alt="Visitas Pastorais">
-                        <div class="folder-overlay">
-                            <div class="folder-info">
-                                <h4>Visitas Pastorais</h4>
-                                <p>Clique para ver as fotos</p>
-                                <span class="photo-count">4 fotos</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Pasta 2: Encontros semanais -->
-                <div class="folder-item" data-folder="encontros">
-                    <div class="folder-cover">
-                        <img src="https://via.placeholder.com/300x200/054b98/ffffff?text=Encontros" alt="Encontros semanais">
-                        <div class="folder-overlay">
-                            <div class="folder-info">
-                                <h4>Encontros semanais</h4>
-                                <p>Clique para ver as fotos</p>
-                                <span class="photo-count">0 fotos</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Pasta 3: Gesto concreto -->
-                <div class="folder-item" data-folder="gesto">
-                    <div class="folder-cover">
-                        <img src="https://via.placeholder.com/300x200/28a745/ffffff?text=Gesto" alt="Gesto concreto">
-                        <div class="folder-overlay">
-                            <div class="folder-info">
-                                <h4>Gesto concreto</h4>
-                                <p>Clique para ver as fotos</p>
-                                <span class="photo-count">0 fotos</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Pasta 4: Datas especiais -->
-                <div class="folder-item" data-folder="datas">
-                    <div class="folder-cover">
-                        <img src="https://via.placeholder.com/300x200/508394/ffffff?text=Datas" alt="Datas especiais">
-                        <div class="folder-overlay">
-                            <div class="folder-info">
-                                <h4>Datas especiais</h4>
-                                <p>Clique para ver as fotos</p>
-                                <span class="photo-count">0 fotos</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Pasta 5: Branco -->
-                <div class="folder-item" data-folder="branco">
-                    <div class="folder-cover">
-                        <img src="https://via.placeholder.com/300x200/054b98/ffffff?text=Branco" alt="Branco">
-                        <div class="folder-overlay">
-                            <div class="folder-info">
-                                <h4>Branco</h4>
-                                <p>Clique para ver as fotos</p>
-                                <span class="photo-count">0 fotos</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Pasta 6: Outros momentos -->
-                <div class="folder-item" data-folder="outros">
-                    <div class="folder-cover">
-                        <img src="https://via.placeholder.com/300x200/28a745/ffffff?text=Outros" alt="Outros momentos">
-                        <div class="folder-overlay">
-                            <div class="folder-info">
-                                <h4>Outros momentos</h4>
-                                <p>Clique para ver as fotos</p>
-                                <span class="photo-count">0 fotos</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Folder Modals (moved outside containers for proper full-screen display) -->
-    <div class="folder-content" id="folder-visitas">
-        <div class="folder-header">
-            <h3>🏠 Visitas Pastorais</h3>
-            <button class="close-folder">×</button>
-        </div>
-        <div class="photos-grid">
-            <div class="photo-item">
-                <img src="imagens/img_visita1.jpeg" alt="Visita 1">
-                <div class="photo-caption">Visita</div>
-            </div>
-            <div class="photo-item">
-                <img src="imagens/img_visita2.jpeg" alt="Visita 2">
-                <div class="photo-caption">Visita</div>
-            </div>
-            <div class="photo-item">
-                <img src="imagens/img_visita3.jpeg" alt="Visita 3">
-                <div class="photo-caption">Visita</div>
-            </div>
-            <div class="photo-item">
-                <img src="imagens/img_visita4.jpeg" alt="Visita 4">
-                <div class="photo-caption">Visita à Família Costa</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="folder-content" id="folder-encontros">
-        <div class="folder-header">
-            <h3>Encontros semanais</h3>
-            <button class="close-folder">×</button>
-        </div>
-        <div class="photos-grid">
-            <div class="no-photos">
-                <p>Em breve, fotos dos nossos encontros semanais!</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="folder-content" id="folder-gesto">
-        <div class="folder-header">
-            <h3>Gesto concreto</h3>
-            <button class="close-folder">×</button>
-        </div>
-        <div class="photos-grid">
-            <div class="no-photos">
-                <p>Em breve, fotos dos nossos gestos concretos!</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="folder-content" id="folder-datas">
-        <div class="folder-header">
-            <h3>Datas especiais</h3>
-            <button class="close-folder">×</button>
-        </div>
-        <div class="photos-grid">
-            <div class="no-photos">
-                <p>Em breve, fotos das nossas datas especiais!</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="folder-content" id="folder-branco">
-        <div class="folder-header">
-            <h3>Branco</h3>
-            <button class="close-folder">×</button>
-        </div>
-        <div class="photos-grid">
-            <div class="no-photos">
-                <p>Em breve, fotos em branco!</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="folder-content" id="folder-outros">
-        <div class="folder-header">
-            <h3>Outros momentos</h3>
-            <button class="close-folder">×</button>
-        </div>
-        <div class="photos-grid">
-            <div class="no-photos">
-                <p>Em breve, fotos de outros momentos!</p>
-            </div>
-        </div>
-    </div>
 
     <!-- História do Grupo -->
     <section id="historia" class="historia">
@@ -339,14 +170,14 @@
                     <h4>Redes Sociais</h4>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/acutis06/"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
                         <a href="#"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 <div class="footer-section">
                     <h4>Horários de Encontro</h4>
-                    <p>Segunda: 19:30h às 20:30h</p>
+                    <p>Segunda: 19:30h às 21:00h</p>
                     <p>Reunião de Oração</p>
                 </div>
             </div>

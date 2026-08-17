@@ -89,8 +89,22 @@ body {
     margin-top: 80px;
 }
 
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 4rem;
+    max-width: 1200px;
+    padding: 0 40px;
+    text-align: left;
+}
+
+.hero-text {
+    text-align: left;
+}
+
 .hero-content h1 {
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-weight: 700;
     color: white;
     margin-bottom: 1rem;
@@ -102,6 +116,37 @@ body {
     color: #e0f0ff;
     margin-bottom: 2rem;
     font-weight: 400;
+}
+
+/* Hero quote box - decorative prayer/quote card */
+.hero-quote-box {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.hero-quote-icon {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.hero-quote-text {
+    color: white;
+    font-size: 1.4rem;
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.hero-quote-author {
+    color: #e0f0ff;
+    font-weight: 500;
+    font-size: 1rem;
 }
 
 .cta-button {
@@ -160,7 +205,7 @@ body {
 }
 
 .evangelho-box {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.527);
     backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 3rem;
@@ -262,6 +307,8 @@ body {
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(5, 75, 152, 0.1);
     border: 1px solid rgba(5, 75, 152, 0.1);
+    max-height: 500px;
+    overflow-y: auto;
 }
 
 .intencoes-lista h3 {
@@ -288,198 +335,8 @@ body {
     font-weight: 500;
 }
 
-/* Galeria Section - Folder Based */
-.galeria {
-    padding: 80px 0;
-    background: white;
-}
 
-.galeria h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    color: #054b98;
-    margin-bottom: 3rem;
-}
 
-.galeria-folders {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    /* Ensure this doesn't create a stacking context that traps modals */
-    position: relative;
-}
-
-.folder-item {
-    position: relative;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(5, 75, 152, 0.2);
-    transition: all 0.3s ease;
-    cursor: pointer;
-    /* Remove any constraints that might limit the modal */
-}
-
-.folder-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(5, 75, 152, 0.3);
-}
-
-.folder-cover {
-    position: relative;
-    height: 250px;
-    overflow: hidden;
-}
-
-.folder-cover img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.folder-item:hover .folder-cover img {
-    transform: scale(1.05);
-}
-
-.folder-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(transparent, rgba(5, 75, 152, 0.8));
-    color: white;
-    padding: 2rem 1.5rem 1.5rem;
-    transform: translateY(0);
-    transition: transform 0.3s ease;
-}
-
-.folder-info h4 {
-    font-size: 1.3rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-}
-
-.folder-info p {
-    font-size: 0.9rem;
-    opacity: 0.9;
-    margin-bottom: 0.5rem;
-}
-
-.photo-count {
-    display: inline-block;
-    background: #28a745;
-    padding: 0.3rem 0.8rem;
-    border-radius: 15px;
-    font-size: 0.8rem;
-    font-weight: 500;
-}
-
-/* Folder Content (Modal-like) */
-.folder-content {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    background: rgba(0, 0, 0, 0.9);
-    z-index: 10000;
-    display: none;
-    overflow-y: auto;
-    padding: 2rem;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    /* Ensure it's not contained by parent */
-    transform: none !important;
-    clip: none !important;
-    contain: none !important;
-}
-
-.folder-content.active {
-    display: block !important;
-    opacity: 1;
-}
-
-.folder-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.folder-header h3 {
-    color: white;
-    font-size: 2rem;
-    margin: 0;
-}
-
-.close-folder {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 2.5rem;
-    cursor: pointer;
-    padding: 0.5rem;
-    border-radius: 50%;
-    transition: background 0.3s ease;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.close-folder:hover {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.photos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.photo-item {
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
-    background: white;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
-}
-
-.photo-item:hover {
-    transform: scale(1.02);
-}
-
-.photo-item img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    cursor: pointer;
-}
-
-.photo-caption {
-    padding: 1rem;
-    background: white;
-    color: #333;
-    font-weight: 500;
-    text-align: center;
-}
-
-.no-photos {
-    grid-column: 1 / -1;
-    text-align: center;
-    padding: 4rem 2rem;
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 1.1rem;
-}
 
 /* Animations */
 @keyframes fadeIn {
@@ -491,41 +348,7 @@ body {
     }
 }
 
-/* Photo Lightbox */
-.photo-lightbox {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.95);
-    z-index: 10002; /* Higher than folder content */
-    display: none;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
 
-.photo-lightbox.active {
-    display: flex;
-    opacity: 1;
-}
-
-.photo-lightbox img {
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 10px;
-    box-shadow: 0 0 50px rgba(255, 255, 255, 0.3);
-    cursor: default;
-    transform: scale(0.9);
-    transition: transform 0.3s ease;
-}
-
-.photo-lightbox.active img {
-    transform: scale(1);
-}
 
 /* História Section */
 .historia {
@@ -740,6 +563,17 @@ body {
         font-size: 1.1rem;
     }
     
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+        padding: 0 20px;
+    }
+
+    .hero-text {
+        text-align: center;
+    }
+
     .intencoes-content,
     .historia-content,
     .carlo-content {
