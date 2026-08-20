@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acutis - Missionários da Esperança</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h2>Acutis - Missionários da Esperança</h2>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link">Início</a></li>
+                    <li><a href="#evangelho" class="nav-link">Evangelho do Dia</a></li>
+                    <li><a href="#intencoes" class="nav-link">Intenções</a></li>
+                    <li><a href="#historia" class="nav-link">Nossa História</a></li>
+                    <li><a href="#carlo-acutis" class="nav-link">Carlo Acutis</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Acutis - Missionários da Esperança</h1>
+                <p>Estar sempre unido a Jesus, este é o meu projeto de vida</p>
+                <button class="cta-button">Conheça Nossa Missão</button>
+            </div>
+            <div class="hero-quote-box">
+                <i class="fas fa-quote-left hero-quote-icon"></i>
+                <p class="hero-quote-text">Todos nascem originais, mas muitos morrem como fotocópias.</p>
+                <span class="hero-quote-author">— Carlo Acutis</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Evangelho do Dia -->
+    <section id="evangelho" class="evangelho">
+        <div class="container">
+            <h2>Evangelho do Dia</h2>
+            <div class="evangelho-content">
+                <div class="evangelho-box">
+                    <div class="evangelho-header">
+                        <h3 id="evangelho-data">Carregando...</h3>
+                    </div>
+                    <div class="evangelho-text">
+                        <p id="evangelho-leitura">Carregando evangelho do dia...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intenções -->
+    <section id="intencoes" class="intencoes">
+        <div class="container">
+            <h2>Compartilhe Suas Intenções</h2>
+            <div class="intencoes-content">
+                <form class="intencoes-form">
+                    <div class="form-group">
+                        <label for="nome">Nome (opcional)</label>
+                        <input type="text" id="nome" name="nome" placeholder="Seu nome">
+                    </div>
+                    <div class="form-group">
+                        <label for="intencao">Sua Intenção</label>
+                        <textarea id="intencao" name="intencao" rows="4" placeholder="Compartilhe sua intenção de oração..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Enviar Intenção</button>
+                </form>
+                <div class="intencoes-lista">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h3>Intenções da Comunidade</h3>
+                        <button id="refresh-btn" style="background: #28a745; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; font-size: 0.9rem;">🔄 Atualizar</button>
+                    </div>
+                    <div id="lista-intencoes">
+                        <div class="loading-intencoes">
+                            <div class="loading"></div>
+                            <p>Carregando intenções...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- História do Grupo -->
+    <section id="historia" class="historia">
+        <div class="container">
+            <h2>Nossa História</h2>
+            <div class="historia-content">
+                <div class="historia-text">
+                    <p>O Grupo Acutis: Missionários da Esperança nasceu do desejo ardente de viver o Evangelho em sua essência: anunciar Jesus Cristo com alegria, simplicidade e proximidade. Inspirados pelo lema de São Carlo Acutis – “Estar sempre unido a Jesus Cristo, este é o meu projeto de vida” –, somos parte da Paróquia Cristo Rei e temos como missão levar esperança, fé e amor às famílias, especialmente aos jovens, mas também a todos aqueles que precisam de uma palavra de conforto e de um abraço de uma Igreja viva.</p> 
+                    <p>Atendendo ao apelo do Papa Francisco para sermos uma Igreja em saída, não nos contentamos em ficar parados. Queremos ir ao encontro, bater às portas, visitar os corações, e assim realizar uma verdadeira experiência missionária.</p>
+                    <p>O Grupo Acutis é isso: um chamado à santidade possível, alegre e verdadeira. Uma comunidade em movimento, apaixonada por Jesus Cristo, que sonha em transformar o mundo começando pelo encontro com cada pessoa, em cada visita.</p>
+                    </div>
+                <div class="historia-imagem">
+                    <img src="imagens/grupo completo.jpeg" alt="História do Grupo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visitas Pastorais e Reuniões -->
+    <section id="atividades" class="atividades">
+        <div class="container">
+            <h2>Como Vivemos a Missão</h2>
+            <div class="atividades-content">
+                <div class="atividade-card">
+                    <div class="atividade-icon"><i class="fas fa-route"></i></div>
+                    <h3>Visitas Pastorais</h3>
+                    <ul>
+                        <li>Agradecimentos e apresentação</li>
+                        <li>Apresentação do tema</li>
+                        <li>Canto para acendimento da vela</li>
+                        <li>Acendimento da vela</li>
+                        <li>Canto para invocação do Espírito Santo</li>
+                        <li>Oração de invocação do Espírito Santo</li>
+                        <li>Celebração do perdão</li>
+                        <li>Canto para acolher a Palavra de Deus</li>
+                        <li>Palavra de Deus</li>
+                        <li>Partilha da Palavra</li>
+                        <li>Preces espontâneas</li>
+                        <li>Testemunho de São Carlo Acutis</li>
+                        <li>Orações do Pai Nosso, Ave Maria, Credo e Glória ao Pai</li>
+                        <li>Gesto concreto (nesse momento um gesto concreto particular e firmado pelas pessoas vistadas e outro e firmado entres elas e o grupo, nesse caso, é proposto de todos participarem da Santa Missa no domingo, mas caso não seja possível, pode-se propor outro gesto concreto)</li>
+                        <li>Oração final</li>
+                        <li>Canto final</li>
+                    </ul>
+                
+                </div>
+                <div class="atividades-divider">
+                    <i class="fas fa-compass"></i>
+                </div>
+                <div class="atividade-card">
+                    <div class="atividade-icon"><i class="fas fa-users"></i></div>
+                    <h3>Reuniões</h3>
+                    <ul>
+                        <li>Canto de preparação e acendimento da vela</li>
+                        <li>Oração inicial</li>
+                        <li>Proclamação, momento de leitura e partilha da meditação do Evangelho do dia</li>
+                        <li>Breve leitura e partilha do livro sobre a vida de São Carlo Acutis</li>
+                        <li>Discernimento e preparação para a realização de visitas e compromissos</li>
+                        <li>Oração final</li>
+                        <li>Canto final</li>    
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carlo Acutis -->
+    <section id="carlo-acutis" class="carlo-acutis">
+        <div class="container">
+            <h2>Carlo Acutis - Nosso Intercessor</h2>
+            <div class="carlo-content">
+                <div class="carlo-imagem">
+                    <img src="imagens/img_CA.jpeg" alt="Carlo Acutis">
+                </div>
+                <div class="carlo-info">
+                    
+                    
+                    <div class="carlo-beatificacao">
+                        <h4>História e Beatificação:</h4>
+                        <p>Carlo Acutis nasceu em 3 de maio de 1991, em Londres, Inglaterra, de pais italianos. Aos 11 anos, fez a promessa de viver sempre unido a Jesus na Eucaristia, o que se tornou o lema de sua vida: "Estar sempre unido a Jesus Cristo, este é o meu projeto de vida".</p>
+                        <p>Desde cedo, demonstrou uma fé profunda e uma vida de oração intensa. Frequentava a missa diariamente e rezava o terço todos os dias. Tinha uma devoção especial à Eucaristia e à Virgem Maria. Apesar de sua família ser abastada, viveu com simplicidade e dedicou-se a ajudar os pobres e necessitados.</p>
+                        <p>Carlo também tinha paixão por tecnologia e programação. Criou um site sobre milagres eucarísticos, catalogando centenas de milagres ocorridos ao redor do mundo. Ele via a internet como "um trem de alta velocidade" para levar as pessoas a Deus.</p>
+                        <p>Carlo Acutis foi beatificado em 10 de outubro de 2020, em Assis, Itália, pelo Papa Francisco. O milagre que permitiu sua beatificação foi a cura de uma criança brasileira, Enzo Petrucci, que sofreu uma grave pancreatite aguda em 2019. Os médicos consideravam a criança perdida, mas ela se recuperou de forma inexplicável após a intercessão de Carlo.</p>
+                        <p>Com sua beatificação, Carlo tornou-se o primeiro "millennial" (geração nascida entre 1982 e 1994) a ser beatificado pela Igreja Católica. Sua festa litúrgica é celebrada no dia 12 de outubro.</p>
+                        
+                        <h4>Processo de Canonização:</h4>
+                        <p>Atualmente, a Igreja aguarda a aprovação de um segundo milagre atribuído à intercessão de Carlo Acutis para que ele possa ser canonizado e declarado santo. O processo de canonização está em andamento na Santa Sé.</p>
+                        <p>O Papa Francisco, ao beatificá-lo, destacou que Carlo é "um modelo de santidade para os jovens da atualidade", mostrando que a santidade é possível mesmo na juventude e no meio da cultura digital.</p>
+                    </div>
+                    
+                    <div class="carlo-quote">
+                        <blockquote>
+                            "A Eucaristia é a minha autoestrada para o Céu"
+                            <cite>- Beato Carlo Acutis</cite>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Acutis - Missionários da Esperança</h3>
+                    <p>Levando a palavra de Deus e a esperança para todos os corações.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <p><i class="fas fa-envelope"></i> avanteacutis@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> (27) 99797-0997</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Sooretama, ES</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Redes Sociais</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/acutismissionarios/?next=%2F"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Horários de Encontro</h4>
+                    <p>Segunda: 19:30h às 21:00h</p>
+                    <p>Reunião de Oração</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Luiz Felipe de Almeida Bonfá. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
