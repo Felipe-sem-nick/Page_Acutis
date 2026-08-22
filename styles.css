@@ -171,7 +171,7 @@ body {
 /* Evangelho Section */
 .evangelho {
     padding: 80px 0;
-    background: url('imagens/img_fundo_cruz.jpg') center/cover;
+    background: url('imagens/fundo_evangelho_2.jpeg') center/cover;
     background-attachment: fixed;
     position: relative;
 }
